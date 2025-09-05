@@ -2,25 +2,26 @@ import React, {useState} from "react";
 import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet, ScrollView, TextInput, Alert } from 'react-native';
 export default function App() {
 const [pagina, setPagina] = useState('home');
+
 return (
     <SafeAreaView style={styles.container}>
-      <header pagina={pagina} setPagina={setPagina} />
+      <Header pagina={pagina} setPagina={setPagina} />
       <ScrollView contentContainerStyle={styles.content}>
         {pagina === 'home' && <Home />}
         {pagina === 'sobre' && <Sobre />}
         {pagina === 'servicos' && <Servicos />}
         {pagina === 'contato' && <Contato />}
       </ScrollView>
-      <footer />
+      <Footer />
     </SafeAreaView>
 );
 }
-function header({pagina, setPagina}) {
+function Header({ pagina, setPagina }) {
     return (
         <View style={styles.header}>
            <Text style={styles.headerTitle}>MMA</Text>
         <View style={styles.nav}>
-          {['home', 'sobre', 'servicos', 'contato'].map((p)=>(
+          {['home', 'sobre', 'servicos', 'contato'].map((p) => (
             <TouchableOpacity 
             key={p} 
             style={[styles.navButton, pagina === p && styles.navButtonActive]}
@@ -80,6 +81,8 @@ function Contato() {
     setEmail('');
     setMensagem('');
   }
+
+
   return (
     <View style={styles.section}>
       <Text style={styles.title}>Contato</Text>
